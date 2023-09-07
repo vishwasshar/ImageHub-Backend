@@ -9,6 +9,8 @@ require("dotenv").config();
 
 const app = express();
 
+const port = process.env.PORT || 5400;
+
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
 
@@ -30,6 +32,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/working", (req, res, next) => {
+  res.send("working");
+});
+
 app.use(
   fileUpload({
     useTempFiles: true,
@@ -41,5 +47,5 @@ app.use("/user", userRoutes);
 app.use("/img", imgRoutes);
 
 mongooseConnect(() => {
-  app.listen(3001);
+  app.listen(port);
 });
