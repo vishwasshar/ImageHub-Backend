@@ -1,6 +1,6 @@
 const express = require("express");
 const { mongooseConnect } = require("./util/database");
-
+const cors = require('cors');
 const fileUpload = require("express-fileupload");
 const userRoutes = require("./routes/user");
 const imgRoutes = require("./routes/Img");
@@ -13,6 +13,12 @@ const port = process.env.PORT || 5400;
 
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
+
+app.use(
+  cors({
+    origin: "https://vi-imagehub.netlify.app",
+  })
+);
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
