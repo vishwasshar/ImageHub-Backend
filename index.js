@@ -1,6 +1,6 @@
 const express = require("express");
 const { mongooseConnect } = require("./util/database");
-const cors = require('cors');
+const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const userRoutes = require("./routes/user");
 const imgRoutes = require("./routes/Img");
@@ -16,27 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(
   cors({
-    origin: "https://vi-imagehub.netlify.app",
+    origin: "*",
   })
 );
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, PATCH"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, Accept"
-  );
-
-  if (req.method === "OPTIONS") {
-    res.status(200).end();
-    return;
-  }
-  next();
-});
 
 app.use("/working", (req, res, next) => {
   res.send("working");
@@ -51,7 +33,8 @@ app.use(
 app.use("/user", userRoutes);
 
 app.use("/img", imgRoutes);
+console.log("working")
+mongooseConnect(() => {console.log("working")
 
-mongooseConnect(() => {
   app.listen(port);
 });
