@@ -20,7 +20,7 @@ app.use(
   })
 );
 
-app.use("/img/submit", cors(), (req, res, next) => {
+app.use("/img/submit", (req, res, next) => {
   res.send("worked");
 });
 
