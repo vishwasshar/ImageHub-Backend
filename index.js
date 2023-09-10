@@ -26,10 +26,6 @@ app.use(
   })
 );
 
-app.use("/img/submit", (req, res, next) => {
-  res.send("worked");
-});
-
 app.use("/user", userRoutes);
 
 app.use("/img", imgRoutes);
