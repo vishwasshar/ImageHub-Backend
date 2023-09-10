@@ -20,6 +20,10 @@ app.use(
   })
 );
 
+app.use("/img/submit'", (req, res, next) => {
+  res.send("worked"); 
+});
+
 app.use(
   fileUpload({
     useTempFiles: true,
