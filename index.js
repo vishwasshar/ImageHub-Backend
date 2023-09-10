@@ -24,6 +24,7 @@ app.use(function (req, res, next) {
 app.use(
   fileUpload({
     useTempFiles: true,
+    tempFileDir: "/tmp/",
   })
 );
 app.use("/user", userRoutes);
