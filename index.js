@@ -14,11 +14,11 @@ const port = process.env.PORT || 5400;
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
 
-app.use(
-  fileUpload({
-    useTempFiles: true,
-  })
-);
+// app.use(
+//   fileUpload({
+//     useTempFiles: true,
+//   })
+// );
 
 app.use(
   cors({
