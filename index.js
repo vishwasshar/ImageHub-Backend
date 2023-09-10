@@ -14,12 +14,6 @@ const port = process.env.PORT || 5400;
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
 
-app.use(
-  fileUpload({
-    useTempFiles: true,
-  })
-);
-
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   console.log(req.body);
@@ -27,6 +21,11 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(
+  fileUpload({
+    useTempFiles: true,
+  })
+);
 app.use("/user", userRoutes);
 
 app.use("/img", imgRoutes);
