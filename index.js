@@ -20,10 +20,6 @@ app.use(
   })
 );
 
-app.use("/working", (req, res, next) => {
-  res.send("working");
-});
-
 app.use(
   fileUpload({
     useTempFiles: true,
@@ -33,8 +29,6 @@ app.use(
 app.use("/user", userRoutes);
 
 app.use("/img", imgRoutes);
-console.log("working")
-mongooseConnect(() => {console.log("working")
-
+mongooseConnect(() => {
   app.listen(port);
 });

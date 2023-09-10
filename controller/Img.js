@@ -8,6 +8,7 @@ v2.config({
 });
 
 const imgSubmission = async (req, res) => {
+  console.log("working");
   let imgPath;
   await v2.uploader.upload(req.files.img.tempFilePath, (err, result) => {
     if (err) {
