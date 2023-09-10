@@ -15,14 +15,14 @@ app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
 
 app.use(
-  cors({
-    origin: "*",
+  fileUpload({
+    useTempFiles: true,
   })
 );
 
 app.use(
-  fileUpload({
-    useTempFiles: true,
+  cors({
+    origin: "*",
   })
 );
 
